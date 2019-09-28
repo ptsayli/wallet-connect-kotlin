@@ -9,10 +9,10 @@ data class WCSession (
     val key: String
 ) {
     companion object {
-        fun from(from: String): WCSession? {
-            if (!from.startsWith("wc:")) {
-                return null
-            }
+        fun from(from: String): WCSession {
+//            if (!from.startsWith("wc:")) {
+//                return null
+//            }
 
             val uriString = from.replace("wc:", "wc://")
             val uri = Uri.parse(uriString)
@@ -21,10 +21,9 @@ data class WCSession (
             val topic = uri.userInfo
             val version = uri.host
 
-            if (bridge == null || key == null || topic == null || version == null) {
-                return null
-            }
-
+//            if (bridge == null || key == null || topic == null || version == null) {
+//                return null
+//            }
             return WCSession(topic, version, bridge, key)
         }
     }
